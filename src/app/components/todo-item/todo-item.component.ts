@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../../models/Todo';
+import { TimeoutError } from 'rxjs';
 
 @Component({
   selector: 'app-todo-item',
@@ -12,4 +13,14 @@ export class TodoItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  // Set Dynamic Classes
+  setClasses() {
+    let classes = {
+      todo: true,
+      'is-complete': this.todo.completed
+    };
+
+    return classes;
+  }
 }
