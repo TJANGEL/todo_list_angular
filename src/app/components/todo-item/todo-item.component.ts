@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Todo } from '../../models/Todo';
 import { TodoService } from '../../services/todo.service';
 import { TimeoutError } from 'rxjs';
@@ -10,6 +10,7 @@ import { TimeoutError } from 'rxjs';
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo: Todo;
+  @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter();
 
   constructor(private todoService: TodoService) {}
 
@@ -34,6 +35,6 @@ export class TodoItemComponent implements OnInit {
       .subscribe(todo => console.log('toggle'));
   }
   onDelete(todo) {
-    console.log('Delete');
+    this.deleteTodo.emit(todo);
   }
 }
