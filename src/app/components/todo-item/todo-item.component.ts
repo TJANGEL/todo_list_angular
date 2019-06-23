@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Todo } from '../../models/Todo';
 import { TodoService } from '../../services/todo.service';
-import { TimeoutError } from 'rxjs';
+
+import { Todo } from '../../models/Todo';
 
 @Component({
   selector: 'app-todo-item',
@@ -30,10 +30,9 @@ export class TodoItemComponent implements OnInit {
     // Toggle in UI
     todo.completed = !todo.completed;
     // Toggle on Server
-    this.todoService
-      .toggleCompleted(todo)
-      .subscribe(todo => console.log('toggle'));
+    this.todoService.toggleCompleted(todo).subscribe(todo => console.log(todo));
   }
+
   onDelete(todo) {
     this.deleteTodo.emit(todo);
   }
