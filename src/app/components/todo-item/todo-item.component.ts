@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../../models/Todo';
+import { TodoService } from '../../services/todo.service';
 import { TimeoutError } from 'rxjs';
 
 @Component({
@@ -10,7 +11,7 @@ import { TimeoutError } from 'rxjs';
 export class TodoItemComponent implements OnInit {
   @Input() todo: Todo;
 
-  constructor() {}
+  constructor(private todoService: TodoService) {}
 
   ngOnInit() {}
 
@@ -22,5 +23,17 @@ export class TodoItemComponent implements OnInit {
     };
 
     return classes;
+  }
+
+  onToggle(todo) {
+    // Toggle in UI
+    todo.completed = !todo.completed;
+    // Toggle on Server
+    this.todoService
+      .toggleCompleted(todo)
+      .subscribe(todo => console.log('toggle'));
+  }
+  onDelete(todo) {
+    console.log('Delete');
   }
 }
