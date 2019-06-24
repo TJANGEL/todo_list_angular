@@ -1,4 +1,12 @@
-# Angular
+#To Do List
+
+To Do List application for changing state of list items, i.e. complete delete and add tasks.
+
+## Netlify Deployment
+
+Click [HERE](https://thirsty-ramanujan-235452.netlify.com/) to view a demo
+
+## Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
