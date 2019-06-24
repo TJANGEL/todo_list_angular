@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 
-import { Todo } from '../../models/Todo';
+import { Todo } from 'src/app/models/Todo';
 
 @Component({
   selector: 'app-todo-item',
@@ -29,7 +29,7 @@ export class TodoItemComponent implements OnInit {
   onToggle(todo) {
     // Toggle in UI
     todo.completed = !todo.completed;
-    // Toggle on Server
+    // Toggle on server
     this.todoService.toggleCompleted(todo).subscribe(todo => console.log(todo));
   }
 
